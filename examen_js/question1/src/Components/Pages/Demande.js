@@ -25,7 +25,6 @@ const Demande = () => {
    
  
 
-  
 
 
     DEFAULT_PROPOSALS.forEach(demande => {
@@ -41,8 +40,9 @@ const Demande = () => {
       <td scope="col">
      
       <td scope="col">
+ 
       <form name='formulaire'>
-      <select   id='selectOption' >
+      <select   id='selectOption'  >
       <option >${demande.status}</option>"
       
 
@@ -59,6 +59,8 @@ const Demande = () => {
      
       
        </form>
+        </select >
+      
                            </td>
                           
       `
@@ -94,28 +96,14 @@ const Demande = () => {
     document.getElementById("selectOption").onchange = function(){
       var value = document.getElementById("selectOption").value;//si value grand ou petei changer 
       console.log(value);
-      DEFAULT_PROPOSALS[0].status=LEVEL_OPTIONS[value];
+      DEFAULT_PROPOSALS[0].status=LEVEL_OPTIONS[value-2];
       console.log(DEFAULT_PROPOSALS);
       console.log(DEFAULT_PROPOSALS[0]);
       console.log(value);
+     
       
-   };
-   document.getElementById("test").onchange = function(){
-    var value = document.getElementById("selectOption").value;
-    console.log(value);
-    DEFAULT_PROPOSALS[0].status=LEVEL_OPTIONS[value];
-    console.log(DEFAULT_PROPOSALS);
-    console.log(DEFAULT_PROPOSALS[0]);
-    console.log(value);
-    
- };
-    
 
-  const status = document.createElement("selectOption");
-   
-    status.addEventListener("click", () => {
 
-      DEFAULT_PROPOSALS[0].status='done';
       
       console.log(DEFAULT_PROPOSALS);
       pageDiv.innerHTML="";
@@ -157,11 +145,12 @@ const Demande = () => {
        <option value="${demande.id}"> ${LEVEL_OPTIONS[2]} </option>
        <option value="${demande.id}"> ${LEVEL_OPTIONS[3]} </option>
                            </td>
+                           <div id="change"> </div>
     
       `
 
 
-
+    
      
     /*  pageDiv.innerHTML+= "<select  id='levelListAdd'>"
                        
@@ -173,16 +162,20 @@ const Demande = () => {
                 */
  
 
-
+                        
    pageDiv.innerHTML+=`   </td>
+  
+   
     </tr>
   </thead>
   <tbody>
 
 
     `
+   
+    
     });
-
+    pageDiv.innerHTML+=` <div><h3> valeur id : ${DEFAULT_PROPOSALS[value-2].id} changer en ${DEFAULT_PROPOSALS[value-2].status}</h3> </div>` ;
 
   
 /*
@@ -217,7 +210,7 @@ const Demande = () => {
      
 
     
-  });
+  };
 
     
  
